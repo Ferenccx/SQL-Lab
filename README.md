@@ -65,14 +65,26 @@ INNER JOIN Customers ON Orders = Customers;
 15. Use a join to get the ship city and ship country of all the orders which are associated
 with an employee who is in London.
 
+SELECT ship_name FROM orders
+INNER JOIN 
+	order_details 
+	ON 
+	orders.order_id = order_details.order_id
+INNER JOIN
+	products 
+	ON 
+	products.product_id = order_details.product_id
+WHERE discontinued = 1;
+
 16. Use a join to get the ship name of all orders that include a discontinued product. (See
 orders, order_details, and products. 1 means discontinued.)
 
+SELECT * FROM orders;
+SELECT * FROM order_details;
+SELECT * FROM products WHERE discontinued = 1;
+
 17. Get first names of all employees who report to no one.
 
-SELECT first_name 
-FROM employees 
-JOIN last_name = 'Andrew';
-
+SELECT * FROM employees WHERE reports_to IS NULL;
 
 18. Get first names of all employees who report to Andrew.
